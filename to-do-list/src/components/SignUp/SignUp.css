@@ -1,0 +1,109 @@
+@font-face {
+
+    font-family: 'Thorup Sans';
+    src:url(../Fonts/Thorup\ Sans.ttf);
+
+}
+
+.sign-up-container {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    align-items: center;
+
+}
+
+.sign-up-form {
+   
+    display: flex;
+    flex-direction: column;
+
+}
+
+.form-heading-container {
+
+    display: flex;
+    justify-content: center;
+
+}
+
+.sign-up-form p {
+   
+    font-size: 20pt;
+
+}
+
+.sign-up-form h2 {
+   
+    font-size: 24pt;
+
+}
+
+.sign-up-form label{
+   
+    font-size: 24pt;
+    padding-bottom: 2px;
+
+}
+
+.sign-up-form input {
+   
+    font-size: 24pt;
+    margin-bottom: 15px;
+    border-radius: 15px;
+    font-family: 'Thorup Sans';
+    padding-left: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: 45px;
+
+}
+
+.sign-up-form-button {
+
+    display: flex;
+    justify-content: center;
+
+}
+
+.sign-up-form-button button {
+   
+    width: 150px;
+    height: 50px;
+    background-color: black;
+    color: white;
+    font-size: 32pt;
+    border: none;
+    font-family: 'Thorup Sans';
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 15px;
+    cursor: pointer;
+
+}
+
+#user-name-invalid {
+
+    color: red;
+    font-size: 28pt;
+    font-weight: bold;
+}
+
+#email-invalid {
+
+    color: red;
+    font-size: 28pt;
+    font-weight: bold;
+    
+}
+
+#password-invalid {
+
+    color: red;
+    margin-bottom: 5px;
+    font-size: 28pt;
+    font-weight: bold;
+    
+}
