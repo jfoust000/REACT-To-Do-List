@@ -22,8 +22,8 @@ function SignUp() {
 
     };
 
-
     return (
+
         <div>
             <Header/>
         <div className='sign-up-container'>
@@ -33,27 +33,29 @@ function SignUp() {
                     <h2>Welcome To Remind Me</h2>
                 </div>
                 <p>Please Log In</p>
-                <label className='sign-up-label' htmlFor='userName'>
-                    User Name 
-                </label>
-                <input type='text' className='sign-up-input' id='userName' onChange={e=>setUserName(e.target.value)}>
-                </input>
-                {invalidEntry && userName.length <= 0 ?
-                <label id='user-name-invalid'>Please Enter a Valid User Name</label> : ''}
-                <label className='sign-up-label' htmlFor='emailAddress'>
-                    Email
-                </label>
-                <input type='email' className='sign-up-input' id='emailAddress' onChange={e=>setUserEmail(e.target.value)}>
-                </input>
-                {invalidEntry && userEmail.length <= 0 ?
-                <label id='email-invalid'>Please Enter a Valid Email Address</label> : ''}
-                <label className='sign-up-label' htmlFor='passwordField'>
-                    Password
-                </label>
-                <input type='password' className='sign-up-input' id='passwordField' onChange={e=>setUserPassword(e.target.value)}>
-                </input>
-                {invalidEntry && userPassword.length <= 0 ?
-                <label id='password-invalid'>Please Enter a Valid Password</label> : ''}
+                <div className='input-container'>
+                    <label className='sign-up-label' htmlFor='userName'>
+                        User Name 
+                    </label>
+                    <input type='text' className='sign-up-input' id='userName' onChange={e=>setUserName(e.target.value)}>
+                    </input>
+                    {invalidEntry && userName.length <= 0 ?
+                    <label id='user-name-invalid'>Please Enter a Valid User Name</label> : ''}
+                    <label className='sign-up-label' htmlFor='emailAddress'>
+                        Email
+                    </label>
+                    <input type='email' className='sign-up-input' id='emailAddress' onChange={e=>setUserEmail(e.target.value)}>
+                    </input>
+                    {invalidEntry && userEmail.length <= 0 ?
+                    <label id='email-invalid'>Please Enter a Valid Email Address</label> : ''}
+                    <label className='sign-up-label' htmlFor='passwordField'>
+                        Password
+                    </label>
+                    <input type='password' className='sign-up-input' id='passwordField' onChange={e=>setUserPassword(e.target.value)}>
+                    </input>
+                    {invalidEntry && userPassword.length <= 0 ?
+                    <label id='password-invalid'>Please Enter a Valid Password</label> : ''}
+                </div>
                 <div className='sign-up-form-button'>
                     <button>Log In</button>
                 </div>

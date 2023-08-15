@@ -1,8 +1,12 @@
 h1 {
+
     font-size: 52pt;
+
 }
 .header-container {
+
     background-color: aqua;
     border-radius: 15px;
     padding: 2px;
+    
 }
