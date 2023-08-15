@@ -12,6 +12,11 @@
 
 }
 
+.form-heading-container h2 {
+
+    margin-bottom: 0px;
+}
+
 .sign-up-container {
 
     display: flex;
@@ -26,23 +31,26 @@
 
     display: flex;
     flex-direction: column;
-    border: 2px solid black;
+    border: 1px solid black;
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 15px;
+    width: 300px;
 
 }
 
 .sign-up-form p {
    
-    font-size: 20pt;
+    font-size: 24pt;
     padding-left: 10px;
+    margin-bottom: 0px;
+    
 
 }
 
 .sign-up-form h2 {
    
-    font-size: 24pt;
+    font-size: 32pt;
 
 }
 
@@ -62,6 +70,8 @@
     padding-top: 10px;
     padding-bottom: 10px;
     height: 35px;
+    border:1px solid black;
+    text-indent: 10px;
     
     
 

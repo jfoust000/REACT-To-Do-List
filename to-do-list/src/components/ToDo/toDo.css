@@ -1,0 +1,78 @@
+@font-face {
+
+    font-family: 'Thorup Sans';
+    src:url(../Fonts/Thorup\ Sans.ttf);
+
+}
+
+body {
+
+    font-family: 'Thorup Sans';
+}
+
+.to-do-form-container {
+
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 12px;
+
+}
+
+.to-do-container {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10%;
+  
+}
+
+.to-do-error {
+
+    font-size: 24pt;
+    color: red;
+    border: 1px solid red;
+    border-radius: 10px;
+    padding-top: 5px;
+    font-weight: bold;
+
+}
+
+h2 {
+
+    font-size: 32pt;
+    
+}
+
+.to-do-container form {
+
+    display: flex;
+    gap: 5%;
+ 
+}
+
+.to-do-container button {
+
+    width: 100px;
+    height: 40px;
+    color: white;
+    background-color: black;
+    border: none;
+    font-size: 24pt;
+    font-family: 'Thorup Sans';
+    text-align:center;
+    padding-top:7px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.to-do-input {
+
+    width: 300px;
+    border: 1px solid black;
+    border-radius: 12px;
+    font-size: 24pt;
+    font-family: 'Thorup Sans';
+    text-indent: 10px;
+
+}
