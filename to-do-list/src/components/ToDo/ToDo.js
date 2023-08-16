@@ -5,7 +5,7 @@ import ToDoForm from "./ToDoForm.js";
 
 //actions like delete, edit, add, and complete
 
-function ToDo () {
+function ToDo (props) {
 
 return (
     
@@ -13,7 +13,15 @@ return (
         <Header/>
         <h2>To-Do List</h2>
         <div className="to-do-container">
-        <ToDoForm/>
+        <ToDoForm
+        toDo={props.toDo}
+        setToDo={props.setToDo}
+        toDoList={props.toDoList}
+        setToDoList={props.setToDoList}
+        error={props.error}
+        setError={props.setError}
+        handleSubmit={props.handleSubmit}
+        />
         </div>
         
     </div>

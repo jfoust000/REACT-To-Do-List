@@ -3,42 +3,38 @@ import React from 'react';
 import { useState } from 'react';
 import ToDoList from './ToDoList';
 
-function ToDoForm () {
+function ToDoForm (props) {
 
-    const [toDo, setToDo] = useState("");
-    const [error, setError] = useState(false);
-    const [toDoList, setToDoList] = useState([]);
+    // const [toDo, setToDo] = useState("");
+    // const [error, setError] = useState(false);
+    // const [toDoList, setToDoList] = useState([]);
+    // const handleSubmit = (e) => {
 
+    //     e.preventDefault();
 
-    const handleSubmit = (e) => {
+    //     if (props.toDo.length === 0) {
 
-        e.preventDefault();
+    //         props.setError(true);
 
-        if (toDo.length === 0) {
+    //     } else {
 
-            setError(true);
-
-        } else {
-
-            console.log(toDo);
-            setToDoList([...toDoList, toDo]);
-            console.log(toDoList);
-
-        }
+    //         props.setToDoList([...props.toDoList, props.toDo]);
+          
+    //     }
+    //     console.log(props.toDoList);
 
 
+    // };
 
-    };
-
-    return (
+        return (
         <div>
-            {error && toDo.length <=0 ?
+            {props.error && props.toDo.length <=0 ?
             <p className='to-do-error'>Enter a To-Do</p>
             : ""}
         <div className='to-do-container'>
             <div className='to-do-form-container'>
-            <form onSubmit={handleSubmit}>
-                <input type='text' className='to-do-input' placeholder='Enter ToDo' onChange={e=>setToDo(e.target.value)}></input>
+            <form onSubmit={(e)=>props.handleSubmit(e)}>
+                <input type='text' className='to-do-input' onChange={(e)=>props.setToDo(e.target.value)} value={props.toDo}></input>
 
                 <button className='add-to-do-button'>Add</button>
            </form>
