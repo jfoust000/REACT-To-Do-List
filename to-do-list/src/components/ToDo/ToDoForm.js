@@ -3,42 +3,56 @@ import React from 'react';
 import { useState } from 'react';
 import ToDoList from './ToDoList';
 
-function ToDoForm (props) {
+function ToDoForm () {
 
-    // const [toDo, setToDo] = useState("");
-    // const [error, setError] = useState(false);
-    // const [toDoList, setToDoList] = useState([]);
-    // const handleSubmit = (e) => {
+    const [toDo, setToDo] = useState("");
 
-    //     e.preventDefault();
+    const [error, setError] = useState(false);
+    const [toDoList, setToDoList] = useState([]);
+    
+    
+    
+    const handleSubmit = (e) => {
 
-    //     if (props.toDo.length === 0) {
+        e.preventDefault();
 
-    //         props.setError(true);
+        if (toDo.length === 0) {
 
-    //     } else {
+            setError(true);
 
-    //         props.setToDoList([...props.toDoList, props.toDo]);
+        } else {
+
+             const newToDo = {
+
+                date: new Date().getTime(),
+                toDo: toDo,
+                completed: false,
+
+            };
+
+            setToDoList([...toDoList, newToDo]);
+            setToDo("");
           
-    //     }
-    //     console.log(props.toDoList);
+        }
 
-
-    // };
+    };
 
         return (
         <div>
-            {props.error && props.toDo.length <=0 ?
+            {error && toDo.length <=0 ?
             <p className='to-do-error'>Enter a To-Do</p>
             : ""}
         <div className='to-do-container'>
             <div className='to-do-form-container'>
-            <form onSubmit={(e)=>props.handleSubmit(e)}>
-                <input type='text' className='to-do-input' onChange={(e)=>props.setToDo(e.target.value)} value={props.toDo}></input>
+            <form onSubmit={handleSubmit}>
+                <input type='text' className='to-do-input' onChange={e=>setToDo(e.target.value)} value={toDo}></input>
 
                 <button className='add-to-do-button'>Add</button>
            </form>
-
+            <ToDoList 
+            toDoList={toDoList}
+            setToDoList={setToDoList}
+            />
            </div>
         </div>
         </div>

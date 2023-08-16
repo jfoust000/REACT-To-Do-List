@@ -47,7 +47,8 @@ h2 {
 .to-do-container form {
 
     display: flex;
-    gap: 5%;
+    gap: 2%;
+    justify-content: center;
  
 }
 
@@ -68,11 +69,89 @@ h2 {
 
 .to-do-input {
 
-    width: 300px;
+    width: 320px;
     border: 1px solid black;
     border-radius: 12px;
     font-size: 24pt;
     font-family: 'Thorup Sans';
     text-indent: 10px;
+    margin-left: -35px;
 
 }
+
+.add-to-do-button {
+
+    margin-right: -25px;
+
+}
+
+.to-do-list {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    min-width: 455px;
+    min-height:50px;
+    font-size: 24pt;
+    
+
+}
+
+.todo-row {
+
+    margin-top: 10px;
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 12px;
+
+}
+
+.checkbox {
+
+    margin-right: 20px;
+    margin-left: 10px;
+
+}
+
+.list-buttons {
+    
+    display: block;
+    margin-top: 10px;
+    
+}
+
+#right-align-button {
+
+    margin-left: 225px;
+
+}
+
+#left-align-button {
+
+    margin-left: 9px;
+
+}
+
+#save-button {
+
+    margin-left: 9px;
+
+}
+
+#edit-text-input {
+
+    font-size: 24pt;
+    border: 1px solid black;
+    border-radius: 12px;
+    font-family: 'Thorup Sans';
+    text-indent: 10px;
+
+}
+
+span {
+
+    font-size: 24pt;
+
+}
+
