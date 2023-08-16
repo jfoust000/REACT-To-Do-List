@@ -22,7 +22,9 @@ function ToDoForm () {
 
         } else {
 
-             const newToDo = {
+            setError(false);
+
+            const newToDo = {
 
                 date: new Date().getTime(),
                 toDo: toDo,

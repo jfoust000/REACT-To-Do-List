@@ -1,11 +1,17 @@
 import './toDo.css';
 import React from 'react';
 import { useState } from 'react';
+import Completed from '../Completed/Completed.js';
+import { useNavigate } from 'react-router-dom';
+
 
 function ToDoList (props) {
 
     const [toDoEdit, setToDoEdit] = useState(null);
     const [toDoEditText, setToDoEditText] = useState("");
+    const [completedToDos, setCompletedToDos] = useState([]);
+    const navigate = useNavigate();
+    let completed = false;
 
     function deleteToDo (date) {
 
@@ -23,8 +29,30 @@ function ToDoList (props) {
 
                 toDo.completed = !toDo.completed;
 
-            }
+                if (toDo.completed) {
 
+                    completed = true;
+
+                    const completedDate = new Date();
+
+                    const newCompletedToDo = {
+
+                        date: completedDate,
+                        toDo: toDo.toDo,
+                        status: "Completed"
+
+                    };
+
+                    setCompletedToDos([...completedToDos, newCompletedToDo]);
+                    console.log(completedToDos);
+                } else {
+
+                    completed = false;
+                    
+
+                }
+            }
+            
             return toDo
 
         })
@@ -102,6 +130,10 @@ function ToDoList (props) {
                     );
 
             })}
+            {props.toDoList.length > 0 && completedToDos.length > 0 ?
+            <button type="button" className='view-completed-to-dos'> Completed</button>
+            :
+            null}
 
         </div>
 
