@@ -26,7 +26,7 @@ function ToDoForm () {
 
             const newToDo = {
 
-                date: new Date().getTime(),
+                date: new Date(),
                 toDo: toDo,
                 completed: false,
 

@@ -9,9 +9,10 @@ function ToDoList (props) {
 
     const [toDoEdit, setToDoEdit] = useState(null);
     const [toDoEditText, setToDoEditText] = useState("");
-    const [completedToDos, setCompletedToDos] = useState([]);
     const navigate = useNavigate();
-    let completed = false;
+    const [count, setCount] = useState(0);
+    
+    
 
     function deleteToDo (date) {
 
@@ -22,37 +23,29 @@ function ToDoList (props) {
     }
 
     function setCompletedStatus (date) {
-
+        
         const updatedToDos = [...props.toDoList].map(toDo => {
 
             if (toDo.date === date) {
-
+                
                 toDo.completed = !toDo.completed;
 
-                if (toDo.completed) {
-
-                    completed = true;
-
-                    const completedDate = new Date();
-
-                    const newCompletedToDo = {
-
-                        date: completedDate,
-                        toDo: toDo.toDo,
-                        status: "Completed"
-
-                    };
-
-                    setCompletedToDos([...completedToDos, newCompletedToDo]);
-                    console.log(completedToDos);
-                } else {
-
-                    completed = false;
+                if (toDo.completed === true) {
                     
-
+                    setCount(count + 1);
+    
+                } else if (toDo.completed === false) {
+                    
+                    if (count > 0) {
+    
+                        setCount(count - 1);
+                        
+                    }
+    
                 }
+
             }
-            
+
             return toDo
 
         })
@@ -130,8 +123,8 @@ function ToDoList (props) {
                     );
 
             })}
-            {props.toDoList.length > 0 && completedToDos.length > 0 ?
-            <button type="button" className='view-completed-to-dos'> Completed</button>
+            {count > 0 ?
+            <button type="button" id='view-completed-to-dos'> Completed</button>
             :
             null}
 
