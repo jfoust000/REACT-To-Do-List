@@ -9,10 +9,9 @@ function ToDoList (props) {
 
     const [toDoEdit, setToDoEdit] = useState(null);
     const [toDoEditText, setToDoEditText] = useState("");
-    const navigate = useNavigate();
     const [count, setCount] = useState(0);
-    
-    
+    const [completedToDoList, setCompletedToDoList] = useState([]);
+    const navigate = useNavigate();
 
     function deleteToDo (date) {
 
@@ -33,13 +32,21 @@ function ToDoList (props) {
                 if (toDo.completed === true) {
                     
                     setCount(count + 1);
+
+                    toDo.completedDate = new Date().toLocaleString();
+                    
+                    setCompletedToDoList([...completedToDoList, toDo]);
     
                 } else if (toDo.completed === false) {
                     
                     if (count > 0) {
     
                         setCount(count - 1);
-                        
+
+                        const updatedCompletedToDoList = [...completedToDoList.filter(toDo => toDo.date !== date)];
+
+                        setCompletedToDoList(updatedCompletedToDoList);
+                        console.log(completedToDoList);
                     }
     
                 }
@@ -73,6 +80,27 @@ function ToDoList (props) {
         setToDoEditText("");
 
     }
+
+function redirectToCompleted () {
+
+    console.log("inside redirectToCompleted");
+            
+    navigate("/completed", {
+
+        state: {
+
+            toDoList: completedToDoList
+
+        },
+                
+                
+
+                
+                
+    });
+    
+
+}
     
    
 
@@ -124,7 +152,7 @@ function ToDoList (props) {
 
             })}
             {count > 0 ?
-            <button type="button" id='view-completed-to-dos'> Completed</button>
+            <button type="button" id='view-completed-to-dos' onClick={() => redirectToCompleted()}> Completed</button>
             :
             null}
 

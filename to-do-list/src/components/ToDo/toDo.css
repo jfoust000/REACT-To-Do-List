@@ -160,3 +160,28 @@ span {
 
 }
 
+.completed-to-do-table {
+
+    font-size: 32pt;
+    width: 50%;
+    border-width: 10%;
+    border-spacing: 20px;
+
+}
+
+.completed-to-do-table th {
+
+    background-color: black;
+    color: white;
+    border-radius: 15px;
+    padding-top:5px;
+    
+}
+
+.completed-to-do-list-table-container {
+
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+
+}

@@ -26,7 +26,8 @@ function ToDoForm () {
 
             const newToDo = {
 
-                date: new Date(),
+                date: new Date().toLocaleString(),
+                completedDate: "",
                 toDo: toDo,
                 completed: false,
 

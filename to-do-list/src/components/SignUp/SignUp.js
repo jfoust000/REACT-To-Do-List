@@ -38,7 +38,7 @@ function SignUp() {
                 <div className='form-heading-container'>
                     <h2>Welcome To Remind Me</h2>
                 </div>
-                <p>Please Log In</p>
+                <p>Create Account</p>
                 <div className='input-container'>
                     <label className='sign-up-label' htmlFor='userName'>
                         User Name 
@@ -63,7 +63,7 @@ function SignUp() {
                     <label id='password-invalid'>Please Enter a Valid Password</label> : ''}
                 </div>
                 <div className='sign-up-form-button'>
-                    <button>Log In</button>
+                    <button>Sign Up</button>
                 </div>
             </form>
         </div>
