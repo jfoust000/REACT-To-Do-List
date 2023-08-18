@@ -50,8 +50,6 @@ function ToDoList (props) {
 
         window.localStorage.setItem('REMIND_ME_APP', JSON.stringify(completedToDoList));
 
-        console.log("in useEffect " + JSON.stringify(completedToDoList));
-
     }, [completedToDoList]);
 
     useEffect(() => {
@@ -65,6 +63,12 @@ function ToDoList (props) {
         const updatedToDos = [...props.toDoList.filter(toDo => toDo.id !== id)];
 
         props.setToDoList(updatedToDos);
+
+        if (count > 0) {
+
+            setCount(count - 1);
+
+        }
 
     }
 
