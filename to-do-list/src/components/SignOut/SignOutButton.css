@@ -1,0 +1,14 @@
+#sign-out-button {
+    width: 100px;
+    height: 40px;
+    color: white;
+    background-color: black;
+    border: none;
+    font-size: 24pt;
+    font-family: 'Thorup Sans';
+    text-align:center;
+    padding-top:7px;
+    border-radius: 12px;
+    cursor: pointer;
+    
+}

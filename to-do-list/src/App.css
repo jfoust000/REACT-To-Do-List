@@ -8,6 +8,7 @@
 body {
 
   font-family: 'Thorup Sans';
+  min-height: 100vh;
 
 }
 

@@ -119,7 +119,7 @@ function redirectToCompleted () {
 
                         {toDoEdit === toDo.date ? 
                         
-                            <input id='edit-text-input'type='text' onChange={(e) => setToDoEditText(e.target.value)} value={toDoEditText}></input> 
+                            <input id='edit-text-input'type='text' autoFocus onChange={(e) => setToDoEditText(e.target.value)} value={toDoEditText} placeholder='Edit To-Do Text' ></input> 
                         :
                         <span style=
 

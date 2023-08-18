@@ -2,6 +2,7 @@ import '../ToDo/toDo.css';
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import Header from '../Header/Header.js';
+import Footer from "../Footer/Footer.js";
 
 function Completed () {
 
@@ -43,6 +44,7 @@ function Completed () {
             </tbody>
         </table>
         </div>
+        <Footer/>
     </div>);
     
 }

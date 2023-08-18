@@ -15,7 +15,7 @@ body {
     border: 1px solid black;
     padding: 10px;
     border-radius: 12px;
-
+    margin-bottom:100%;
 }
 
 .to-do-container {
@@ -157,6 +157,7 @@ span {
 #view-completed-to-dos {
 
     margin-top:10px;
+    
 
 }
 
@@ -166,7 +167,7 @@ span {
     width: 50%;
     border-width: 10%;
     border-spacing: 20px;
-
+    
 }
 
 .completed-to-do-table th {

@@ -36,9 +36,9 @@ function SignUp() {
             
             <form className='sign-up-form' onSubmit={handleSubmit}>
                 <div className='form-heading-container'>
-                    <h2>Welcome To Remind Me</h2>
+                    <h2>Create an Account</h2>
                 </div>
-                <p>Create Account</p>
+                <p>Enter your information</p>
                 <div className='input-container'>
                     <label className='sign-up-label' htmlFor='userName'>
                         User Name 

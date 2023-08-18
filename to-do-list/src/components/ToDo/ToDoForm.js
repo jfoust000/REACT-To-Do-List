@@ -48,7 +48,7 @@ function ToDoForm () {
         <div className='to-do-container'>
             <div className='to-do-form-container'>
             <form onSubmit={handleSubmit}>
-                <input type='text' className='to-do-input' onChange={e=>setToDo(e.target.value)} value={toDo}></input>
+                <input type='text' autoFocus className='to-do-input' onChange={e=>setToDo(e.target.value)} value={toDo} placeholder='Enter a to-Do'></input>
 
                 <button className='add-to-do-button'>Add</button>
            </form>

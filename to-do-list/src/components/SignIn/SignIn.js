@@ -7,7 +7,6 @@ import { useNavigate } from 'react-router-dom';
 function SignIn () {
 
     const [userName, setUserName] = useState("");
-    const [userEmail, setUserEmail] = useState("");
     const [userPassword, setUserPassword] = useState("");
     const [invalidEntry, setInvalidEntry] = useState(false);
     const navigate = useNavigate();
@@ -16,17 +15,23 @@ function SignIn () {
 
         e.preventDefault();
 
-        if (userName.length === 0 || userEmail.length === 0 || userPassword.length === 0) {
+        if (userName.length === 0 || userPassword.length === 0) {
 
             setInvalidEntry(true);
 
         } else {
-
+           
             navigate("/todo"); 
 
         }
 
     };
+
+    function navigateToSignUp() {
+
+        navigate("/signup"); 
+
+    }
 
     return (
 
@@ -47,13 +52,6 @@ function SignIn () {
                     </input>
                     {invalidEntry && userName.length <= 0 ?
                     <label id='user-name-invalid'>Please Enter a Valid User Name</label> : ''}
-                    <label className='sign-up-label' htmlFor='emailAddress'>
-                        Email
-                    </label>
-                    <input type='email' className='sign-up-input' id='emailAddress' onChange={e=>setUserEmail(e.target.value)}>
-                    </input>
-                    {invalidEntry && userEmail.length <= 0 ?
-                    <label id='email-invalid'>Please Enter a Valid Email Address</label> : ''}
                     <label className='sign-up-label' htmlFor='passwordField'>
                         Password
                     </label>
@@ -68,10 +66,10 @@ function SignIn () {
                 <div className='go-to-sign-up-container'>
                     <p>Don't Have an Account?</p>
                 </div>
-                <div className='sign-up-form-button'>
-                    <button>Create</button>
-                </div>
             </form>
+            <div className='sign-up-form-button'>
+                    <button onClick={navigateToSignUp}>Create</button>
+            </div>
         </div>
         </div>
 
