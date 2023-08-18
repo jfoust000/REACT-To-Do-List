@@ -1,5 +1,5 @@
 import './App.css';
-import SignUp from './components/SignUp/SignUp.js';
+import SignIn from './components/SignIn/SignIn.js';
 import ToDo from './components/ToDo/ToDo.js';
 import Completed from './components/Completed/Completed';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
@@ -14,7 +14,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<SignUp/>}/>
+          <Route path="/" element={<SignIn/>}/>
           <Route path="/todo" element={<ToDo/>}/>
           <Route path="/completed" element={<Completed/>}/>
         </Routes>
