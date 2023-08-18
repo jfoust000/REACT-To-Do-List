@@ -6,8 +6,7 @@ function Footer () {
 
     return (
     <footer className="footer-container">
-        <SignOutButton/>
-        
+        <SignOutButton/>    
     </footer>
     );
 

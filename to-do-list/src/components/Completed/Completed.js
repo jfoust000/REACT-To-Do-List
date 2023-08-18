@@ -43,9 +43,10 @@ function Completed () {
                 })}
             </tbody>
         </table>
+        
         </div>
         <Footer/>
-    </div>);
+   </div> );
     
 }
 

@@ -1,6 +1,6 @@
 import './toDo.css';
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ToDoList from './ToDoList';
 
 function ToDoForm () {
@@ -8,8 +8,30 @@ function ToDoForm () {
     const [toDo, setToDo] = useState("");
 
     const [error, setError] = useState(false);
-    const [toDoList, setToDoList] = useState([]);
+    const [toDoList, setToDoList] = useState(getDataFromStorage());
+
+    function getDataFromStorage () {
+
+        const data = window.localStorage.getItem('REMIND_ME_APP');
+
+        if (data) {
+
+            return JSON.parse(data);
+
+        } else {
+
+            return [];
+
+        }
+
+
+    }
     
+    useEffect(() => {
+
+        window.localStorage.setItem('REMIND_ME_APP', JSON.stringify(toDoList));
+
+    }, [toDoList]);
     
     
     const handleSubmit = (e) => {
@@ -35,7 +57,6 @@ function ToDoForm () {
 
             setToDoList([...toDoList, newToDo]);
             setToDo("");
-          
         }
 
     };

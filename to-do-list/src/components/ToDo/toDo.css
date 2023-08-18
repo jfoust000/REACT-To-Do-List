@@ -5,17 +5,13 @@
 
 }
 
-body {
-
-    font-family: 'Thorup Sans';
-}
-
 .to-do-form-container {
 
     border: 1px solid black;
     padding: 10px;
     border-radius: 12px;
-    margin-bottom:100%;
+    margin-bottom:100%;  
+    
 }
 
 .to-do-container {
@@ -165,7 +161,6 @@ span {
 
     font-size: 32pt;
     width: 50%;
-    border-width: 10%;
     border-spacing: 20px;
     
 }
@@ -184,5 +179,7 @@ span {
     display: flex;
     justify-content: center;
     margin-top: 20px;
+    height: 50%;
+    margin-bottom: 100%;
 
 }
