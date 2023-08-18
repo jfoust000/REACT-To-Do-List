@@ -1,12 +1,29 @@
 import '../ToDo/toDo.css';
 import React from 'react';
-import { useLocation } from 'react-router-dom';
 import Header from '../Header/Header.js';
 import Footer from "../Footer/Footer.js";
+import { useState } from 'react';
+
 
 function Completed () {
 
-    const location = useLocation();
+    const [completedToDoList] = useState(getDataFromStorage());
+
+    function getDataFromStorage () {
+
+        const data = window.localStorage.getItem('REMIND_ME_APP');
+
+            if (data) {
+
+                return JSON.parse(data);
+
+            } else {
+
+                return [];
+
+            }
+
+    }
     
     return (
        <div className='completed-to-do-list'>
@@ -23,10 +40,12 @@ function Completed () {
             </tr>
             </thead>
             <tbody>
-                {location.state.toDoList.map((toDo) => {
+                {completedToDoList.length > 0 ?
+                    completedToDoList.map((toDo, id) => {
+                    
                     return (
-                            
-                            <tr key={toDo.date}>
+                        toDo.completed === true ?
+                            <tr key={id}>
                                 <td>
                                     {toDo.toDo}
                                 </td>
@@ -37,10 +56,10 @@ function Completed () {
                                     {String(toDo.completedDate)}
                                 </td>
                             </tr>
-                            
+                        : null
                         
                     );
-                })}
+                    }) : null}
             </tbody>
         </table>
         

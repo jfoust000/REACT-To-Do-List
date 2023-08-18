@@ -50,6 +50,8 @@ function ToDoList (props) {
 
         window.localStorage.setItem('REMIND_ME_APP', JSON.stringify(completedToDoList));
 
+        console.log("in useEffect " + JSON.stringify(completedToDoList));
+
     }, [completedToDoList]);
 
     useEffect(() => {
@@ -91,7 +93,7 @@ function ToDoList (props) {
                         const updatedCompletedToDoList = [...completedToDoList.filter(toDo => toDo.id !== id)];
 
                         setCompletedToDoList(updatedCompletedToDoList);
-                        console.log(completedToDoList);
+                       
                     }
     
                 }
@@ -186,7 +188,7 @@ function redirectToCompleted () {
                     );
 
             })}
-            
+
             {count > 0 ?
             <button type="button" id='view-completed-to-dos' onClick={() => redirectToCompleted()}> Completed</button>
             :

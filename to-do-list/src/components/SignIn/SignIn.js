@@ -1,6 +1,6 @@
 import '../SignUp/SignUp.css';
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Header from '../Header/Header.js';
 import { useNavigate } from 'react-router-dom';
 
