@@ -1,7 +1,6 @@
 import './toDo.css';
 import React from 'react';
-import { useState } from 'react';
-import Completed from '../Completed/Completed.js';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -9,23 +8,69 @@ function ToDoList (props) {
 
     const [toDoEdit, setToDoEdit] = useState(null);
     const [toDoEditText, setToDoEditText] = useState("");
-    const [count, setCount] = useState(0);
-    const [completedToDoList, setCompletedToDoList] = useState([]);
+    const [count, setCount] = useState(getCountFromStorage());
+    const [completedToDoList, setCompletedToDoList] = useState(getDataFromStorage());
+
     const navigate = useNavigate();
 
-    function deleteToDo (date) {
+    function getDataFromStorage () {
 
-        const updatedToDos = [...props.toDoList.filter(toDo => toDo.date !== date)];
+        const data = window.localStorage.getItem('REMIND_ME_APP');
+
+            if (data) {
+
+                return JSON.parse(data);
+
+            } else {
+
+                return [];
+
+            }
+
+
+    }
+
+    function getCountFromStorage () {
+
+        const data = window.localStorage.getItem('REMIND_ME_APP_COUNT');
+
+        if (data) {
+
+            return Number(data);
+
+        } else {
+
+            return 0;
+
+        }
+
+    }
+
+    useEffect(() => {
+
+        window.localStorage.setItem('REMIND_ME_APP', JSON.stringify(completedToDoList));
+
+    }, [completedToDoList]);
+
+    useEffect(() => {
+
+        window.localStorage.setItem('REMIND_ME_APP_COUNT', count);
+
+    }, [count]);
+
+    function deleteToDo (id) {
+
+        const updatedToDos = [...props.toDoList.filter(toDo => toDo.id !== id)];
 
         props.setToDoList(updatedToDos);
 
     }
 
-    function setCompletedStatus (date) {
+    function setCompletedStatus (id) {
         
         const updatedToDos = [...props.toDoList].map(toDo => {
 
-            if (toDo.date === date) {
+            if (toDo.id === id) {
                 
                 toDo.completed = !toDo.completed;
 
@@ -43,7 +88,7 @@ function ToDoList (props) {
     
                         setCount(count - 1);
 
-                        const updatedCompletedToDoList = [...completedToDoList.filter(toDo => toDo.date !== date)];
+                        const updatedCompletedToDoList = [...completedToDoList.filter(toDo => toDo.id !== id)];
 
                         setCompletedToDoList(updatedCompletedToDoList);
                         console.log(completedToDoList);
@@ -61,11 +106,11 @@ function ToDoList (props) {
 
     }
 
-    function editToDo (date) {
+    function editToDo (id) {
 
         const updatedToDos = [...props.toDoList].map(toDo => {
 
-            if (toDo.date === date) {
+            if (toDo.id === id) {
 
                 toDo.toDo = toDoEditText
 
@@ -82,8 +127,6 @@ function ToDoList (props) {
     }
 
 function redirectToCompleted () {
-
-    console.log("inside redirectToCompleted");
             
     navigate("/completed", {
 
@@ -92,18 +135,11 @@ function redirectToCompleted () {
             toDoList: completedToDoList
 
         },
-                
-                
-
-                
-                
+                            
     });
     
-
 }
     
-   
-
     return (
         
         <div className="to-do-list">
@@ -112,12 +148,11 @@ function redirectToCompleted () {
 
                 return (
                         
-                        
-                    <div className='todo-row' key={toDo.date}>
+                    <div className='todo-row' key={toDo.id}>
                             
-                        <input className='checkbox' type="checkbox" checked={toDo.completed} onChange={() => setCompletedStatus(toDo.date)}></input>
+                        <input className='checkbox' type="checkbox" checked={toDo.completed} onChange={() => setCompletedStatus(toDo.id)}></input>
 
-                        {toDoEdit === toDo.date ? 
+                        {toDoEdit === toDo.id ? 
                         
                             <input id='edit-text-input'type='text' autoFocus onChange={(e) => setToDoEditText(e.target.value)} value={toDoEditText} placeholder='Edit To-Do Text' ></input> 
                         :
@@ -135,13 +170,13 @@ function redirectToCompleted () {
                             
                         <div className='list-buttons'>
 
-                            {toDoEdit === toDo.date ?
+                            {toDoEdit === toDo.id ?
 
-                                <button id='save-button' onClick={() => editToDo(toDo.date)}>Save</button>
+                                <button id='save-button' onClick={() => editToDo(toDo.id)}>Save</button>
                             :
-                                <button id='left-align-button' type="button" className='edit-button' onClick={() => setToDoEdit(toDo.date)}>Edit</button>}
+                                <button id='left-align-button' type="button" className='edit-button' onClick={() => setToDoEdit(toDo.id)}>Edit</button>}
                             
-                            <button type="button" className='delete-button' id='right-align-button' onClick={() => deleteToDo(toDo.date)}>Delete</button>
+                            <button type="button" className='delete-button' id='right-align-button' onClick={() => deleteToDo(toDo.id)}>Delete</button>
 
                         </div>
                            
@@ -151,6 +186,7 @@ function redirectToCompleted () {
                     );
 
             })}
+            
             {count > 0 ?
             <button type="button" id='view-completed-to-dos' onClick={() => redirectToCompleted()}> Completed</button>
             :

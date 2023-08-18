@@ -6,9 +6,20 @@ import ToDoList from './ToDoList';
 function ToDoForm () {
 
     const [toDo, setToDo] = useState("");
-
     const [error, setError] = useState(false);
     const [toDoList, setToDoList] = useState(getDataFromStorage());
+
+    function _uuid() {
+        let d = Date.now();
+        if (typeof performance !== 'undefined' && typeof performance.now === 'function') {
+            d += performance.now(); //use high-precision timer if available
+        }
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+            let r = (d + Math.random() * 16) % 16 | 0;
+            d = Math.floor(d / 16);
+            return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+        });
+    }
 
     function getDataFromStorage () {
 
@@ -48,6 +59,7 @@ function ToDoForm () {
 
             const newToDo = {
 
+                id: _uuid(),
                 date: new Date().toLocaleString(),
                 completedDate: "",
                 toDo: toDo,
