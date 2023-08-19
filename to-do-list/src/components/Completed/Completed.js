@@ -26,10 +26,12 @@ function Completed () {
     }
     
     return (
+
        <div className='completed-to-do-list'>
          <div>
             <Header/>
         </div>
+        <h2>Completed To-Do List</h2>
         <div className='completed-to-do-list-table-container'>
             <table className='completed-to-do-table'>
                 <thead>
@@ -67,7 +69,9 @@ function Completed () {
             </table> 
         </div>
         <Footer/>
-   </div> );
+   </div> 
+   
+   );
     
 }
 

@@ -130,9 +130,61 @@ function ToDoList (props) {
 
         })
 
+        const updatedCompletedToDos = [...completedToDoList].map(toDo => {
+
+            if (toDo.id === id) {
+
+                toDo.toDo = toDoEditText
+
+            }
+
+            return toDo;
+
+        })
+
         props.setToDoList(updatedToDos);
+        setCompletedToDoList(updatedCompletedToDos);
         setToDoEdit(null);
         setToDoEditText("");
+
+    }
+
+    function saveToDoWithEnter (e, id) {
+
+        if (e.keyCode === 13) {
+
+            const updatedToDos = [...props.toDoList].map(toDo => {
+
+                if (toDo.id === id) {
+    
+                    toDo.toDo = toDoEditText
+    
+                }
+    
+                return toDo;
+    
+            })
+
+            const updatedCompletedToDos = [...completedToDoList].map(toDo => {
+
+                if (toDo.id === id) {
+
+                    toDo.toDo = toDoEditText
+
+                }
+
+                return toDo;
+
+            })
+
+                
+    
+            props.setToDoList(updatedToDos);
+            setCompletedToDoList(updatedCompletedToDos);
+            setToDoEdit(null);
+            setToDoEditText("");
+
+        }
 
     }
 
@@ -164,7 +216,7 @@ function redirectToCompleted () {
 
                         {toDoEdit === toDo.id ? 
                         
-                            <input id='edit-text-input'type='text' autoFocus onChange={(e) => setToDoEditText(e.target.value)} value={toDoEditText} placeholder='Edit To-Do Text' ></input> 
+                            <input id='edit-text-input'type='text' autoFocus onChange={(e) => setToDoEditText(e.target.value)} value={toDoEditText} placeholder='Edit To-Do Text' onKeyUp={(e) => saveToDoWithEnter(e, toDo.id)}></input> 
                         :
                         <span style=
 
