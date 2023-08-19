@@ -40,11 +40,15 @@ function Completed () {
             </tr>
             </thead>
             <tbody>
+                
                 {completedToDoList.length > 0 ?
+                
                     completedToDoList.map((toDo, id) => {
                     
                     return (
+
                         toDo.completed === true ?
+
                             <tr key={id}>
                                 <td>
                                     {toDo.toDo}
@@ -56,6 +60,7 @@ function Completed () {
                                     {String(toDo.completedDate)}
                                 </td>
                             </tr>
+
                         : null
                         
                     );

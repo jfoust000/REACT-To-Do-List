@@ -15,7 +15,7 @@ function ToDoList (props) {
 
     function getDataFromStorage () {
 
-        const data = window.localStorage.getItem('REMIND_ME_APP');
+        const data = window.localStorage.getItem('REMIND_ME_APP_COMPLETED');
 
             if (data) {
 
@@ -48,7 +48,7 @@ function ToDoList (props) {
 
     useEffect(() => {
 
-        window.localStorage.setItem('REMIND_ME_APP', JSON.stringify(completedToDoList));
+        window.localStorage.setItem('REMIND_ME_APP_COMPLETED', JSON.stringify(completedToDoList));
 
     }, [completedToDoList]);
 
