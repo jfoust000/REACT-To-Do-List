@@ -64,6 +64,10 @@ function ToDoList (props) {
 
         props.setToDoList(updatedToDos);
 
+        const updatedCompletedToDos = [...completedToDoList.filter(toDo => toDo.id !== id)];
+
+        setCompletedToDoList(updatedCompletedToDos);
+
         if (count > 0) {
 
             setCount(count - 1);
@@ -97,7 +101,7 @@ function ToDoList (props) {
                         const updatedCompletedToDoList = [...completedToDoList.filter(toDo => toDo.id !== id)];
 
                         setCompletedToDoList(updatedCompletedToDoList);
-                       
+                                               
                     }
     
                 }
