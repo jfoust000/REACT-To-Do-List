@@ -2,12 +2,39 @@ import '../ToDo/toDo.css';
 import React from 'react';
 import Header from '../Header/Header.js';
 import Footer from "../Footer/Footer.js";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { auth } from '../../config/firebaseConfig.js';
+import { onAuthStateChanged } from 'firebase/auth';
 
 
 function Completed () {
 
     const [completedToDoList] = useState(getDataFromStorage());
+    const [authUser, setAuthUser] = useState(null);
+
+    useEffect(() => {
+
+        const listen = onAuthStateChanged(auth, (user) => {
+
+            if (user) {
+
+                setAuthUser(user);
+
+            } else {
+
+                setAuthUser(null);
+
+            }
+
+        }); 
+
+        return () => {
+
+            listen();
+
+        };
+
+    },[])
 
     function getDataFromStorage () {
 
@@ -27,7 +54,10 @@ function Completed () {
     
     return (
 
+        <div>
+        {authUser ?
        <div className='completed-to-do-list'>
+        
          <div>
             <Header/>
         </div>
@@ -69,8 +99,9 @@ function Completed () {
             </table> 
         </div>
         <Footer/>
-   </div> 
-   
+        </div> 
+   : null}
+   </div>
    );
     
 }

@@ -1,11 +1,9 @@
 import './App.css';
-import SignIn from './components/SignIn/SignIn.js';
-import SignUp from './components/SignUp/SignUp.js';
+import SignIn from './components/auth/SignIn.js';
+import SignUp from './components/auth/SignUp.js';
 import ToDo from './components/ToDo/ToDo.js';
 import Completed from './components/Completed/Completed';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
-
-
 
 function App() {
   

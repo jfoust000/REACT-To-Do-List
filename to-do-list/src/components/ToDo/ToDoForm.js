@@ -2,12 +2,40 @@ import './toDo.css';
 import React from 'react';
 import { useState, useEffect } from 'react';
 import ToDoList from './ToDoList';
+import { auth } from '../../config/firebaseConfig.js';
+import { onAuthStateChanged } from 'firebase/auth';
 
 function ToDoForm () {
 
     const [toDo, setToDo] = useState("");
     const [error, setError] = useState(false);
     const [toDoList, setToDoList] = useState(getDataFromStorage());
+    const [authUser, setAuthUser] = useState(null);
+
+    useEffect(() => {
+
+        const listen = onAuthStateChanged(auth, (user) => {
+
+            if (user) {
+
+                setAuthUser(user);
+
+            } else {
+
+                setAuthUser(null);
+
+            }
+
+        }); 
+
+        return () => {
+
+            listen();
+
+        };
+
+    },[])
+    
 
     function _uuid() {
         let d = Date.now();
@@ -74,7 +102,10 @@ function ToDoForm () {
     };
 
         return (
+            
         <div>
+            {authUser ? 
+            <div>
             {error && toDo.length <=0 ?
             <p className='to-do-error'>Enter a To-Do</p>
             : ""}
@@ -92,7 +123,9 @@ function ToDoForm () {
            </div>
         </div>
         </div>
-
+        : null}
+        </div>
+        
     );
 
 }

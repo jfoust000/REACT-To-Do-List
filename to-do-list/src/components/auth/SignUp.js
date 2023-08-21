@@ -1,12 +1,15 @@
 import '../SignUp/SignUp.css';
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Header from '../Header/Header.js';
 import { useNavigate } from 'react-router-dom';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { auth } from '../../config/firebaseConfig.js';
 
-function SignIn () {
+function SignUp() {
 
     const [userName, setUserName] = useState("");
+    const [userEmail, setUserEmail] = useState("");
     const [userPassword, setUserPassword] = useState("");
     const [invalidEntry, setInvalidEntry] = useState(false);
     const navigate = useNavigate();
@@ -15,23 +18,26 @@ function SignIn () {
 
         e.preventDefault();
 
-        if (userName.length === 0 || userPassword.length === 0) {
+        if (userEmail.length === 0 || userPassword.length === 0) {
 
             setInvalidEntry(true);
 
         } else {
-           
-            navigate("/todo"); 
+
+            createUserWithEmailAndPassword(auth, userEmail, userPassword)
+           .then((res) => {
+
+                updateProfile(auth.currentUser, {displayName: userName});
+                navigate("/"); 
+            
+           })
+           .catch((error) => {
+            console.log(error);
+           });
 
         }
 
     };
-
-    function navigateToSignUp() {
-
-        navigate("/signup"); 
-
-    }
 
     return (
 
@@ -41,9 +47,9 @@ function SignIn () {
             
             <form className='sign-up-form' onSubmit={handleSubmit}>
                 <div className='form-heading-container'>
-                    <h2>Welcome To Remind Me</h2>
+                    <h2>Create an Account</h2>
                 </div>
-                <p>Please Sign In</p>
+                <p>Enter Email and Password</p>
                 <div className='input-container'>
                     <label className='sign-up-label' htmlFor='userName'>
                         User Name 
@@ -52,6 +58,13 @@ function SignIn () {
                     </input>
                     {invalidEntry && userName.length <= 0 ?
                     <label id='user-name-invalid'>Please Enter a Valid User Name</label> : ''}
+                    <label className='sign-up-label' htmlFor='emailAddress'>
+                        Email
+                    </label>
+                    <input type='email' className='sign-up-input' id='emailAddress' onChange={e=>setUserEmail(e.target.value)}>
+                    </input>
+                    {invalidEntry && userEmail.length <= 0 ?
+                    <label id='email-invalid'>Please Enter a Valid Email Address</label> : ''}
                     <label className='sign-up-label' htmlFor='passwordField'>
                         Password
                     </label>
@@ -61,15 +74,9 @@ function SignIn () {
                     <label id='password-invalid'>Please Enter a Valid Password</label> : ''}
                 </div>
                 <div className='sign-up-form-button'>
-                    <button>Sign In</button>
-                </div>
-                <div className='go-to-sign-up-container'>
-                    <p>Don't Have an Account?</p>
+                    <button>Sign Up</button>
                 </div>
             </form>
-            <div className='sign-up-form-button'>
-                    <button onClick={navigateToSignUp}>Create</button>
-            </div>
         </div>
         </div>
 
@@ -77,4 +84,4 @@ function SignIn () {
 
 }
 
-export default SignIn;
+export default SignUp;
