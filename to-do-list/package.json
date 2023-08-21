@@ -1,5 +1,4 @@
 {
-  "name": "to-do-list",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -37,6 +36,7 @@
     ]
   },
   "devDependencies": {
+    "gh-pages": "^6.0.0",
     "react-router-dom": "^6.15.0"
   }
 }
