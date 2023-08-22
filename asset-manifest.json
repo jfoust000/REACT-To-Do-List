@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/REACT-To-Do-List/static/css/main.a09c076a.css",
-    "main.js": "/REACT-To-Do-List/static/js/main.5ae85be6.js",
+    "main.js": "/REACT-To-Do-List/static/js/main.58e19ec0.js",
     "static/media/Thorup Sans.ttf": "/REACT-To-Do-List/static/media/Thorup Sans.d439479c5b9750e2ddce.ttf",
     "index.html": "/REACT-To-Do-List/index.html",
     "main.a09c076a.css.map": "/REACT-To-Do-List/static/css/main.a09c076a.css.map",
-    "main.5ae85be6.js.map": "/REACT-To-Do-List/static/js/main.5ae85be6.js.map"
+    "main.58e19ec0.js.map": "/REACT-To-Do-List/static/js/main.58e19ec0.js.map"
   },
   "entrypoints": [
     "static/css/main.a09c076a.css",
-    "static/js/main.5ae85be6.js"
+    "static/js/main.58e19ec0.js"
   ]
 }
